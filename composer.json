@@ -15,7 +15,8 @@
     ],
     "require": {
         "php": ">= 7.0",
-        "contentful/contentful": "@beta"
+        "contentful/contentful": "@beta",
+        "illuminate/support": "^5.0"
     },
     "require-dev": {
         "laravel/lumen-framework": "^5.4",
