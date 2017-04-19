@@ -21,7 +21,6 @@ class ContentfulServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /** @noinspection PhpUndefinedMethodInspection */
         $this->app->configure(self::CONFIG_KEY);
 
         $this->registerBindings($this->app, $this->app['config']);
