@@ -1,0 +1,29 @@
+{
+    "name": "nordsoftware/lumen-contentful",
+    "description": "A Lumen service provider for Contentful",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christoffer Lindqvist",
+            "email": "christoffer.lindqvist@nordsoftware.com"
+        },
+        {
+            "name": "Sam Stenvall",
+            "email": "sam.stenvall@nordsoftware.com"
+        }
+    ],
+    "require": {
+        "php": ">= 7.0",
+        "contentful/contentful": "@beta"
+    },
+    "require-dev": {
+        "laravel/lumen-framework": "^5.4",
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nord\\Lumen\\Contentful\\": "src/"
+        }
+    }
+}
