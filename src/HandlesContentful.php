@@ -12,7 +12,7 @@ trait HandlesContentful
     /**
      * @return ContentfulService
      */
-    private function getContentfulService()
+    protected function getContentfulService()
     {
         return app(ContentfulService::class);
     }
