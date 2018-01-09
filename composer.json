@@ -26,5 +26,10 @@
         "psr-4": {
             "Nord\\Lumen\\Contentful\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nord\\Lumen\\Contentful\\Tests\\": "tests/"
+        }
     }
 }
