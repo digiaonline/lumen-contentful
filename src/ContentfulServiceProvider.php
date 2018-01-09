@@ -2,6 +2,7 @@
 
 namespace Nord\Lumen\Contentful;
 
+use Contentful\Delivery\Client;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
@@ -33,8 +34,10 @@ class ContentfulServiceProvider extends ServiceProvider
      */
     protected function registerBindings(Container $container, ConfigRepository $config)
     {
-        $container->singleton(ContentfulServiceContract::class, function() use ($config) {
-            return new ContentfulService($config->get('contentful.api_key'), $config->get('contentful.space_id'));
+        $container->singleton(ContentfulServiceContract::class, function () use ($config) {
+            $client = new Client($config->get('contentful.api_key'), $config->get('contentful.space_id'));
+
+            return new ContentfulService($client);
         });
 
         $container->alias(ContentfulServiceContract::class, ContentfulService::class);

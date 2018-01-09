@@ -18,12 +18,13 @@ class ContentfulService implements ContentfulServiceContract
 
 
     /**
-     * @param string $apiKey
-     * @param string $spaceId
+     * ContentfulService constructor.
+     *
+     * @param Client $client
      */
-    public function __construct($apiKey, $spaceId)
+    public function __construct(Client $client)
     {
-        $this->client = new Client($apiKey, $spaceId);
+        $this->client = $client;
     }
 
 

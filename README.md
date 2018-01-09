@@ -1,5 +1,7 @@
 # lumen-contentful
 
+[![Build Status](https://travis-ci.org/digiaonline/lumen-contentful.svg?branch=master)](https://travis-ci.org/digiaonline/lumen-contentful)
+
 This is a basic Lumen service provider for the Contentful PHP SDK.
  
 ## Requirements
