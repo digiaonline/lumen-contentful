@@ -25,3 +25,23 @@ $app->register(Nord\Lumen\Contentful\ContentfulServiceProvider::class);
 
 Finally, copy `config/contentful.php` to your application's `config/` directory, then define the environment variables 
 in your `.env` file
+
+## Usage
+
+Inject `Nord\Lumen\Contentful\ContentfulServiceContract` into your classes, then you'll be able to access the 
+Contentful client by using the `getClient()` method:
+
+```php
+<?php
+
+use Nord\Lumen\Contentful\ContentfulServiceContract;
+
+class TestService
+{
+
+    public function __construct(ContentfulServiceContract $contentfulService)
+    {
+        $client = $contentfulService->getClient();
+    }
+}
+``` 
