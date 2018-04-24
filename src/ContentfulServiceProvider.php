@@ -35,7 +35,13 @@ class ContentfulServiceProvider extends ServiceProvider
     protected function registerBindings(Container $container, ConfigRepository $config)
     {
         $container->singleton(ContentfulServiceContract::class, function () use ($config) {
-            $client = new Client($config->get('contentful.api_key'), $config->get('contentful.space_id'));
+            $apiKey        = $config->get('contentful.api_key');
+            $spaceId       = $config->get('contentful.space_id');
+            $environmentId = $config->get('contentful.environment_id');
+            $preview       = $config->get('contentful.preview');
+            $defaultLocale = $config->get('contentful.default_locale');
+
+            $client = new Client($apiKey, $spaceId, $environmentId, $preview, $defaultLocale);
 
             return new ContentfulService($client);
         });
