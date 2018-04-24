@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">= 7.0",
-        "contentful/contentful": "^2.0",
+        "contentful/contentful": "^3.0",
         "illuminate/support": "^5.0"
     },
     "require-dev": {

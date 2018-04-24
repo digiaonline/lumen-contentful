@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/digiaonline/lumen-contentful.svg?branch=master)](https://travis-ci.org/digiaonline/lumen-contentful)
 
-This is a basic Lumen service provider for the Contentful PHP SDK.
+This is a basic Lumen service provider for the Contentful PHP SDK. Version 1.x of this library is compatible with 
+version 2.x of the SDK, while version 2.x of this library is compatible with version 3.x of the SDK.
  
 ## Requirements
 
