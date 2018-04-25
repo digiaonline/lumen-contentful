@@ -1,6 +1,8 @@
 # lumen-contentful
 
 [![Build Status](https://travis-ci.org/digiaonline/lumen-contentful.svg?branch=master)](https://travis-ci.org/digiaonline/lumen-contentful)
+[![Latest Stable Version](https://poser.pugx.org/nordsoftware/lumen-contentful/v/stable)](https://packagist.org/packages/nordsoftware/lumen-contentful)
+[![License](https://poser.pugx.org/nordsoftware/lumen-contentful/license)](https://packagist.org/packages/nordsoftware/lumen-contentful)
 
 This is a basic Lumen service provider for the Contentful PHP SDK. Version 1.x of this library is compatible with 
 version 2.x of the SDK, while version 2.x of this library is compatible with version 3.x of the SDK.
