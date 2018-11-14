@@ -3,6 +3,7 @@
 namespace Nord\Lumen\Contentful;
 
 use Contentful\Delivery\Client;
+use Contentful\Delivery\ClientOptions;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
@@ -38,10 +39,9 @@ class ContentfulServiceProvider extends ServiceProvider
             $apiKey        = $config->get('contentful.api_key');
             $spaceId       = $config->get('contentful.space_id');
             $environmentId = $config->get('contentful.environment_id');
-            $preview       = $config->get('contentful.preview');
-            $defaultLocale = $config->get('contentful.default_locale');
 
-            $client = new Client($apiKey, $spaceId, $environmentId, $preview, $defaultLocale);
+            $clientOptions = $this->createClientOptions($config);
+            $client        = new Client($apiKey, $spaceId, $environmentId, $clientOptions);
 
             return new ContentfulService($client);
         });
@@ -49,4 +49,26 @@ class ContentfulServiceProvider extends ServiceProvider
         $container->alias(ContentfulServiceContract::class, ContentfulService::class);
     }
 
+    /**
+     * @param ConfigRepository $config
+     *
+     * @return ClientOptions
+     */
+    protected function createClientOptions(ConfigRepository $config): ClientOptions
+    {
+        $preview       = $config->get('contentful.preview');
+        $defaultLocale = $config->get('contentful.default_locale');
+
+        $clientOptions = new ClientOptions();
+
+        if ($preview !== null) {
+            $clientOptions->usingPreviewApi();
+        }
+
+        if ($defaultLocale !== null) {
+            $clientOptions->withDefaultLocale($defaultLocale);
+        }
+
+        return $clientOptions;
+    }
 }

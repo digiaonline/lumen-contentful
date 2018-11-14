@@ -2,7 +2,7 @@
 
 namespace Nord\Lumen\Contentful;
 
-use Contentful\Delivery\Client;
+use Contentful\Delivery\Client\ClientInterface;
 
 /**
  * Interface ContentfulServiceContract
@@ -12,8 +12,7 @@ interface ContentfulServiceContract
 {
 
     /**
-     * @return Client
+     * @return ClientInterface
      */
-    public function getClient(): Client;
-
+    public function getClient(): ClientInterface;
 }
