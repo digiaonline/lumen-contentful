@@ -2,7 +2,7 @@
 
 namespace Nord\Lumen\Contentful;
 
-use Contentful\Delivery\Client;
+use Contentful\Delivery\Client\ClientInterface;
 
 /**
  * Class ContentfulService
@@ -12,28 +12,25 @@ class ContentfulService implements ContentfulServiceContract
 {
 
     /**
-     * @var Client
+     * @var ClientInterface
      */
     private $client;
-
 
     /**
      * ContentfulService constructor.
      *
-     * @param Client $client
+     * @param ClientInterface $client
      */
-    public function __construct(Client $client)
+    public function __construct(ClientInterface $client)
     {
         $this->client = $client;
     }
 
-
     /**
      * @inheritdoc
      */
-    public function getClient(): Client
+    public function getClient(): ClientInterface
     {
         return $this->client;
     }
-
 }

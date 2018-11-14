@@ -2,6 +2,7 @@
 
 namespace Nord\Lumen\Contentful\Tests;
 
+use Contentful\Delivery\Client;
 use Laravel\Lumen\Application;
 use Nord\Lumen\Contentful\ContentfulService;
 use Nord\Lumen\Contentful\ContentfulServiceProvider;
@@ -34,6 +35,7 @@ class ContentfulServiceProviderTest extends TestCase
         $client  = $service->getClient();
 
         // Basic test only
-        $this->assertTrue($client->isPreview());
+        /** @var Client $client */
+        $this->assertTrue($client->isPreviewApi());
     }
 }
