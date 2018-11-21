@@ -61,7 +61,7 @@ class ContentfulServiceProvider extends ServiceProvider
 
         $clientOptions = new ClientOptions();
 
-        if ($preview !== null) {
+        if ($preview === true) {
             $clientOptions->usingPreviewApi();
         }
 
