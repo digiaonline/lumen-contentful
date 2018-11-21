@@ -38,4 +38,24 @@ class ContentfulServiceProviderTest extends TestCase
         /** @var Client $client */
         $this->assertTrue($client->isPreviewApi());
     }
+
+    public function testPreviewApiNotEnabled()
+    {
+        $app = new Application();
+        $app->register(ContentfulServiceProvider::class);
+
+        config([
+            'contentful.api_key'        => 'key',
+            'contentful.space_id'       => 'secret',
+            'contentful.environment_id' => 'something',
+            'contentful.preview'        => false,
+        ]);
+
+        /** @var ContentfulService $service */
+        $service = app(ContentfulService::class);
+        $client  = $service->getClient();
+
+        /** @var Client $client */
+        $this->assertFalse($client->isPreviewApi());
+    }
 }
