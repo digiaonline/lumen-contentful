@@ -58,3 +58,5 @@ The Contentful SDK client takes a `ClientOption` parameter that controls various
 caching and so on. If you need to deviate from the default options you will have to extend `ContentfulServiceProvider` 
 and override the `createClientOptions` method. Make sure to also register your custom service provider instead of the 
 one from the library.
+
+If you need need to use a custom client completely, override `createClient`.

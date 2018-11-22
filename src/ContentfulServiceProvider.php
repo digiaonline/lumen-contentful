@@ -3,6 +3,7 @@
 namespace Nord\Lumen\Contentful;
 
 use Contentful\Delivery\Client;
+use Contentful\Delivery\Client\ClientInterface;
 use Contentful\Delivery\ClientOptions;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Contracts\Container\Container;
@@ -17,7 +18,6 @@ class ContentfulServiceProvider extends ServiceProvider
 
     const CONFIG_KEY = 'contentful';
 
-
     /**
      * @inheritdoc
      */
@@ -27,7 +27,6 @@ class ContentfulServiceProvider extends ServiceProvider
 
         $this->registerBindings($this->app, $this->app['config']);
     }
-
 
     /**
      * @param Container        $container
@@ -41,12 +40,29 @@ class ContentfulServiceProvider extends ServiceProvider
             $environmentId = $config->get('contentful.environment_id');
 
             $clientOptions = $this->createClientOptions($config);
-            $client        = new Client($apiKey, $spaceId, $environmentId, $clientOptions);
+            $client        = $this->createClient($apiKey, $spaceId, $environmentId, $clientOptions);
 
             return new ContentfulService($client);
         });
 
         $container->alias(ContentfulServiceContract::class, ContentfulService::class);
+    }
+
+    /**
+     * @param string        $apiKey
+     * @param string        $spaceId
+     * @param string        $environmentId
+     * @param ClientOptions $clientOptions
+     *
+     * @return ClientInterface
+     */
+    protected function createClient(
+        string $apiKey,
+        string $spaceId,
+        string $environmentId,
+        ClientOptions $clientOptions
+    ): ClientInterface {
+        return new Client($apiKey, $spaceId, $environmentId, $clientOptions);
     }
 
     /**
