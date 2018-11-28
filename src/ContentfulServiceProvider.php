@@ -72,8 +72,9 @@ class ContentfulServiceProvider extends ServiceProvider
      */
     protected function createClientOptions(ConfigRepository $config): ClientOptions
     {
-        $preview       = $config->get('contentful.preview');
-        $defaultLocale = $config->get('contentful.default_locale');
+        $preview               = $config->get('contentful.preview');
+        $defaultLocale         = $config->get('contentful.default_locale');
+        $lowMemoryResourcePool = $config->get('contentful.low_memory_resource_pool');
 
         $clientOptions = new ClientOptions();
 
@@ -83,6 +84,10 @@ class ContentfulServiceProvider extends ServiceProvider
 
         if ($defaultLocale !== null) {
             $clientOptions->withDefaultLocale($defaultLocale);
+        }
+
+        if ($lowMemoryResourcePool === true) {
+            $clientOptions->withLowMemoryResourcePool();
         }
 
         return $clientOptions;
