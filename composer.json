@@ -16,10 +16,10 @@
     "require": {
         "php": ">= 7.0",
         "contentful/contentful": "^2.0",
-        "illuminate/support": "^5.0"
+        "illuminate/support": "^5.0|^6.0"
     },
     "require-dev": {
-        "laravel/lumen-framework": "^5.4",
+        "laravel/lumen-framework": "^5.4|^6.0",
         "phpunit/phpunit": "^6.1"
     },
     "autoload": {
